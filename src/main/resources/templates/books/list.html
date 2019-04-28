@@ -1,0 +1,45 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>List all books</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+</head>
+<body>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">List of books</div>
+        <div class="panel-body">
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>ISBN-13</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="book : ${books}">
+                    <td th:text="${book.name}"></td>
+                    <td th:text="${book.author}"></td>
+                    <td th:text="${book.isbn}"></td>
+                    <td>
+                        <form style='float:left; padding:5px; height:0px' th:method="get" th:action="@{'/books/'+${book.id}}"><button class="btn btn-default btn-xs" type="submit"><span class="glyphicon glyphicon-search"></span></button></form>
+                        <form style='float:left; padding:5px; height:0px' th:method="get" th:action="@{'/books/'+${book.id}+'/form'}"><button class="btn btn-default btn-xs" type="submit"><span class="glyphicon glyphicon-pencil"></span></button></form>
+                        <form style='float:left; padding:5px; height:0px' th:method="delete" th:action="@{'/books/'+${book.id}}"><button class="btn btn-default btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span></button></form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <a class="btn btn-default" th:href="@{/books/form}">Add a new book</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

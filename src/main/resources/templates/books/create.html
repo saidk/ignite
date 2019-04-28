@@ -1,0 +1,37 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New Plant</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+</head>
+<body>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">New book</div>
+        <div class="panel-body">
+
+            <form class="form-horizontal" role="form" th:object="${book}" th:method="post" th:action="@{/books}">
+                <div class="form-group">
+                    <label for="name" class="col-sm-2 control-label">Title</label>
+                    <input type="text" th:field="*{name}"></input>
+                </div>
+                <div class="form-group">
+                    <label for="author" class="col-sm-2 control-label">Author</label>
+                    <input type="text" th:field="*{author}"></input>
+                </div>
+                <div class="form-group">
+                    <label for="isbn" class="col-sm-2 control-label">ISBN-13</label>
+                    <input type="text" th:field="*{isbn}"></input>
+                </div>
+                <button class="btn btn-default" type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

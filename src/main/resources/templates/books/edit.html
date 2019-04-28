@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New book</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-md-6">
+                <h3>Edit book</h3>
+                <form class="form-horizontal" role="form" th:object="${book}" th:method="post"
+                      th:action="@{/update/{id}(id=${book.id})}">
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Title</label>
+                        <input type="text" th:field="*{name}"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="author" class="col-sm-2 control-label">Author</label>
+                        <input type="text" th:field="*{author}"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="isbn" class="col-sm-2 control-label">Isbn-13</label>
+                        <input type="text" th:field="*{isbn}"></input>
+                    </div>
+                    <button class="btn btn-default" type="submit">Save</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h3>Comments</h3>
+                <form class="form-horizontal" role="form" th:object="${comment}" th:method="post"
+                      th:action="@{/add_comment/{id}(id=${book.id})}">
+                    <div class="form-group">
+                        <label for="comment" class="col-sm-2 control-label">Comment</label>
+                        <textarea type="text" th:field="*{wordComment}"></textarea>
+                    </div>
+                    <button class="btn btn-default" type="submit">Add comment</button>
+                </form>
+                <table class="table">
+                    <tr>
+                        <th>Date</th>
+                        <th>Comment</th>
+                    </tr>
+                    <tr th:each="comment : ${comments}">
+                        <td th:text="${comment.date}"></td></br>
+                        <td th:text="${comment.wordComment}"></td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

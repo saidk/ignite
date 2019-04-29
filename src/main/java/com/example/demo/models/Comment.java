@@ -1,6 +1,8 @@
 package com.example.demo.models;
 
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.Entity;
 import java.util.Date;
@@ -19,5 +21,6 @@ public class Comment {
     Date date;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     Book book;
 }

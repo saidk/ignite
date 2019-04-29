@@ -27,7 +27,6 @@
                     <td th:text="${book.author}"></td>
                     <td th:text="${book.isbn}"></td>
                     <td>
-                        <form style='float:left; padding:5px; height:0px' th:method="get" th:action="@{'/books/'+${book.id}}"><button class="btn btn-default btn-xs" type="submit"><span class="glyphicon glyphicon-search"></span></button></form>
                         <form style='float:left; padding:5px; height:0px' th:method="get" th:action="@{'/books/'+${book.id}+'/form'}"><button class="btn btn-default btn-xs" type="submit"><span class="glyphicon glyphicon-pencil"></span></button></form>
                         <form style='float:left; padding:5px; height:0px' th:method="delete" th:action="@{'/books/'+${book.id}}"><button class="btn btn-default btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span></button></form>
                     </td>
